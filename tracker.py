@@ -40,7 +40,7 @@ class OEISTracker:
 
         mod = count % 10
 
-        for grab in range(10, self.grab+1, 10):
+        for grab in range(0, count+1, 10):
             self.pull.extend(
                 json.loads(
                     oeis_sess.get(
