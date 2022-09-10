@@ -62,7 +62,7 @@ class OEISTracker:
                 count += 1
                 start = each["data"].split(",")
                 start = ", ".join(start) if len(start) < 10 else ", ".join(start[:10]) + "..."
-                self.post.append(f"**[A{each['number']}](https://oeis.org/A{each['number']})**: {each['name']} {start}")
+                self.post.append(f"**[A{each['number']}](https://oeis.org/A{each['number']})**: {each['name']} *{start}*")
                 self.prev.append(each["number"])
         self.post = "\n\n".join(self.post)
         if self.first:
