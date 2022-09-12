@@ -22,11 +22,12 @@ class OEISTracker:
         )
         self.search_string = "https://oeis.org/search?fmt=json&q=keyword:new&start={}"
         self.pull = []
-        self.post = None  # Deprecated
-        self.data = None  # Newer
-        self.grab = 50
+        self.data = None
+        self.post = None
 
         print("Loading previous new sequences...")
+        with open("prev.txt", "a+") as f:  # Ensure file exists
+            pass
         with open("prev.txt", "r") as f:
             self.prev = [int(k) for k in f.read().split("\n") if k]
 
@@ -126,4 +127,5 @@ class OEISTracker:
 
 
 if __name__ == "__main__":
+    # post_to_subreddit <- create_post <- organize_data <- get_recent_new_sequences
     OEISTracker().post_to_subreddit(debug=False, test=False, update=True)
