@@ -62,7 +62,8 @@ class OEISTracker:
     def organize_data(self):
         print("Organizing data pulled from oeis.org...", end="")
         self.data = {}
-        new_prev = list(self.prev)
+        new_prev = []
+        brand_new = []
         for each in self.pull:
             if each["number"] not in self.prev:
                 seq = each["data"].split(",")
@@ -72,8 +73,9 @@ class OEISTracker:
                     "name": each["name"],
                     "seq": seq,
                 }
+                brand_new.append(each["number"])
             new_prev.append(each["number"])
-        self.prev = list(set(new_prev).union(set(self.prev)))
+        self.prev = list(set(new_prev).intersection(set(self.prev))) + brand_new
         print("Data organized.")
 
     def create_post(self):
