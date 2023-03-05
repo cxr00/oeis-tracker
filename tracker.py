@@ -67,7 +67,7 @@ class OEISTracker:
         for each in self.pull:
             if each["number"] not in self.prev:
                 seq = each["data"].split(",")
-                seq = ", ".join(seq[:8]) + ("..." if len(seq) >= 8 else "")
+                seq = ", ".join(seq[:5]) + ("..." if len(seq) >= 5 else "")
                 self.data[f"A{each['number']}"] = {
                     "link": f"https://oeis.org/A{each['number']}",
                     "name": each["name"],
