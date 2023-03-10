@@ -84,7 +84,8 @@ class OEISTracker:
         self.post.append("|OEIS number|Description|Sequence|")
         self.post.append("|-|-|-|")
         for key, value in sorted(self.data.items(), key=lambda x: x[0]):
-            self.post.append(f"|[{key}]({value['link']})|{value['name']}|{value['seq']}|")
+            name = value["name"].replace("|", "\|")
+            self.post.append(f"|[{key}]({value['link']})|{name}|{value['seq']}|")
         self.post = "\n".join(self.post)
         print("Post created.")
 
